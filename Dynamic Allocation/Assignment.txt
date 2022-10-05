@@ -1,0 +1,304 @@
+
+(a) Void pointer can point to which type of objects ?
+
+Answer: All Data-types
+
+
+(b) What is the output?
+int main(){
+   int d = 65;
+   int i = d;
+   char ch = i;
+   cout << ch << endl;
+}
+
+Answer: A
+
+
+(c) What is the output?
+# include <iostream>
+using namespace std;
+
+void updateValue(int *p){
+    *p = 610 % 255;
+}
+
+int main(){
+    char ch = 'A';
+    char *pt = &ch;
+    updateValue((int*)pt);
+    cout << ch;
+}
+
+Answer: d
+
+
+(d) What is the correct syntax of declaring and defining a reference?
+
+Answer: int a = 10; int &b = a;
+
+
+(e) What is the output?
+# include <iostream>
+using namespace std;
+
+void func(int p){
+    cout << p << " ";
+}
+
+int main(){
+    int i = 10;
+    int &p = i;
+    func(p++);
+    cout << i;
+} 
+
+Answer: 10 11
+
+
+(f) What is the output?
+# include <iostream>
+using namespace std;
+
+void func(int i, int& j, int p){
+    i++;
+    j++;
+    p++;
+}
+
+int main(){
+    int i = 10;
+    int j = 6;
+    int &p = i;
+    func(i, j, p);
+    cout << i << " " << j << " " << p;
+}
+
+Answer: 10 7 10
+
+
+(g) Dynamic memory allocation: In CPP, dynamic memory allocation is done using ______________ operator.
+
+Answer: new
+
+
+(h) Deallocate memory: How will you free the memory allocated by following program?
+# include <iostream>
+using namespace std;    
+
+int main() {
+    int *a = new int;
+}
+
+Answer: free a;
+
+
+(i) Correct statement for creating an integer array of size 5, dynamically -
+
+Answer: int *arr = new int[5];
+
+
+(j) Correct statement for deallocating the array is -
+
+Answer: delete [] arr;
+
+
+(k) On deleting a dynamic memory, if the pointer value is not modified, then the pointer points to?
+
+Answer: The same deleted memory location
+
+
+(l) How to Dynamically create a Two Dimensional Array in C++?
+
+Answer: int *twoDArray = new int[10][10];
+
+
+(m) Can we create Jagged Arrays in C++ ?
+
+Answer: Yes
+
+
+(n) Given the following CPP Program. Select the CORRECT Syntax of deleting this 2D array? Check all that apply.
+# include <iostream>
+using namespace std;
+
+int main()
+{
+    int **twoDArray = new int*[10];
+    for(int i = 0; i < 10; i++)
+        *(twoDArray + i) = new int[10];
+}
+Options are -
+A. 
+delete twoDArray [][];
+
+B.
+for(int i = 0; i < 10; i++)
+    delete twoDArray[i];
+    delete twoDArray[];
+
+C.
+for(int i = 0; i < 10; i++)
+    delete [] twoDArray[i];
+    delete[] twoDArray;
+
+D.
+for(int i = 0; i < 10; i++)
+    delete twoDArray[i][];
+    delete[] twoDArray;
+
+Answer: C
+
+
+(o) What is the output of the following program?
+# include <iostream>
+using namespace std;
+
+int x = 1;
+
+void print(){
+    int x = 2;
+    {
+        int x = 3;
+        cout << x << endl;
+    }
+}
+int main(){
+    print();
+    return 0;
+}
+
+Answer: 3
+
+
+(p) What is the output of the following program?
+# include <iostream>
+using namespace std;
+
+#define MULTIPLY(a, b) a*b
+
+int main(){
+    cout << MULTIPLY(2+3, 3+5);
+    return 0;
+}
+
+Answer: 16 ["MULTIPLY(a, b)" will be replaced by "a*b" in code. So, MULTIPLY(2+3, 3+5) will be replaced by 2+3*3+5. And according to operator precedence, multiply operator (*) has higher 
+precedence than plus operator (+).  So, 3*3 will be evaluated first. Hence expression will become : 2+9+5 = 16]
+
+
+(q) What is the output of the following program?
+# include <iostream>
+using namespace std;
+
+#define SQUARE(x) x*x
+
+int main(){
+    int x = 36 / SQUARE(6);
+    cout << x;
+
+    return 0;
+}
+
+Answer: 36
+
+
+(r) Inline functions are useful when ______
+
+Answer: Function is small and we want to avoid function call overhead.
+
+
+(s) What is the output of the following program ?
+#include<iostream>
+using namespace std;
+
+int getValue(int x = 0, int y = 0, int z){  
+    return (x + y + z); 
+}
+
+int main(){
+   cout << getValue(10);
+   return 0;
+}
+
+Answer: Compilation Error
+
+
+(t) Which of the following statement is correct?
+
+Answer: All the parameters of a function can be default parameters.
+
+
+(u) What is the output of the following program ?
+# include <iostream>
+using namespace std;
+
+int main(){
+    int  const  p = 5;
+    cout << ++p;
+    return 0;
+}
+
+Answer: Error [Values of constant variables cannot be altered]
+
+
+(v) What is the output?
+# include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int const *q = &p;
+    p++;
+    cout << p << endl;
+    return 0;
+}
+
+Answer: 6
+
+
+(w) Which statement(s) will give an error for the following code -
+# include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int const *q = &p;
+}
+
+Answer: (*q)++; 
+
+
+(x) Which statement(s) will give an error for the following code -
+# include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int * const q = &p;
+}
+
+Answer: q++; 
+
+
+(y) Which statement(s) will give an error for the following code -
+# include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int const * const q = &p;
+}
+
+Answer: (*q)++; q++; 
+
+
+(z) Which statement(s) will give an error for the following code -
+# include <iostream>
+using namespace std;
+
+int main(){
+    const int p = 5;
+    int const *q = &p;
+}
+
+Answer: p++; (*q)++;
