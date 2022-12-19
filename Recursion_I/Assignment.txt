@@ -1,0 +1,255 @@
+
+(a) Power- Write a program to find x to the power n (i.e. x^n). Take x and n from the user. You need to return the answer. Do this recursively.
+Answer: int power(int x, int n){
+		if(n == 0){
+			return 1;
+		}
+		return x * power(x, n - 1);
+	}
+
+
+(b) Print Numbers- Given the number 'n', write a code to print numbers from 1 to n in increasing order recursively.
+Answer: void print(int n){
+		if(n == 1){
+			cout << n << " ";
+			return;
+		}
+		print(n - 1)
+		cout << n << " ";
+	}
+
+
+(c) Number of Digits- Given the number 'n', find out and return the number of digits present in a number recursively.
+Answer: int count(int n){
+		if(n < 10){
+			return 1;
+		}
+		return 1 + count(n / 10)
+	}
+
+
+(d) What will be the output of the following code ?
+# include <iostream>
+using namespace std;
+
+int func(int num){
+    return func(num- 1);
+}
+
+int main() {
+    int num = 5;
+    int ans = func(num - 1);
+    cout << ans;
+}
+Answer: Runtime Error [Since the base case is missing in the code, therefore there will be infinite recursion calls and hence runtime error will occur]
+
+
+(e) What will be the output ?
+# include <iostream>
+using namespace std;
+
+void print(int n){
+    if(n < 0){
+        return;
+    }
+    cout << n << " ";
+    print(n - 2);
+}
+
+int main() {
+    int num = 5;
+    print(num);
+}
+Answer: 5 3 1
+
+
+(f) What will be the output of the following code ?
+# include <iostream>
+using namespace std;
+
+void print(int n){
+    if(n < 0){
+        return;
+    }
+    if(n == 0){
+        cout << n << “ “;
+        return;
+    }
+    print(n --);
+    cout << n << “ “;
+}
+
+int main() {
+    int num = 3;
+    print(num);
+}
+Answer: Runtime Error [In function print when recursion call is being made  n-- is being passed as input. Here we are using post decrement operator, so argument passed to next function 
+call is n and not n - 1. Thus there will be infinite recursion calls and runtime error will come]
+
+
+(g) Sum of Array- Given an array of length N, you need to find and return the sum of all elements of the array. Do this recursively.
+Answer: int sum(int input[], int n){
+		if(n == 0){
+			return 0;
+		}
+		return input[0] + sum(input + 1, n - 1);	// Here in sum function, input act as an array pointer so adding one to it points to the memory reference of the next index
+	}
+
+
+(h) Check Number- Given an array of length N and an integer x, you need to find if x is present in the array or not. Return true or false. Do this recursively.
+Answer: bool checkNumber(int input[], int size, int x){
+		if (size == 0){
+			return false;
+		}
+		else if(input[0] == x){
+			return true;
+		}
+		return checkNumber(input + 1, size - 1, x)
+	}
+
+
+(i) First Index of Number- Given an array of length N and an integer x, you need to find and return the first index of integer x present in the array. Return -1 if it is not present in 
+the array. First index means, the index of first occurrence of x in the input array. Do this recursively. Indexing in the array starts from 0.
+Answer: int firstIndex(int input[], int size, int x){
+		if (size == 0){
+			return false;
+		}
+		else if(input[0] == x){
+			return true;
+		}
+		int ans = firstIndex(input + 1, size - 1, x)
+		if(ans != -1){
+			// We do this to find the current index that is one plus the array index
+			return ans + 1;	
+		}
+		else{
+			return ans;
+		}
+	}
+
+
+(j) Last Index of Number- Given an array of length N and an integer x, you need to find and return the last index of integer x present in the array. Return -1 if it is not present in the 
+array. Last index means - if x is present multiple times in the array, return the index at which x comes last in the array. You should start traversing your array from 0, not from (N - 1).
+Do this recursively. Indexing in the array starts from 0.
+Answer: int lastIndex(int input[], int size, int x){
+		if(size == 0){
+			return -1;
+		}
+		int ans = lastIndex(input + 1, size - 1, x);
+		if(ans != -1){
+			return ans + 1;
+		}
+		if(input[0] == x){
+			return 0;
+		}
+		else{
+			return -1;
+		}
+	}
+
+
+(k) All Indices of Number- Given an array of length N and an integer x, you need to find all the indexes where x is present in the input array. Save all the indexes in an array 
+(in increasing order). Do this recursively. Indexing in the array starts from 0.
+Answer: void findIndexes(int input[], int currIndex, int size, int x, int output[], int &k){
+		if(currIndex == size){
+			return;
+		}
+		if(input[currIndex] == x){
+			output[k] = currIndex;
+			k++;
+		}
+		findIndexes(input, (currIndex + 1), size, x, output, k)
+	}
+	int allIndexes(int input[], int size, int x, int output[]){
+		int k = 0;
+		findIndexes(input, 0, size, x, output, k)
+		return k;
+	}
+	int main(){
+		int n;
+		cin >> n;
+		int *input = new int[n];
+		for(int i = 0; i < n; i++){
+			cin >> input[i];
+		}
+		int x;
+		cin >> x;
+		int *output = new int[n];
+		int size = allIndexes(input, n, x, output)
+		for(int i = 0; i < size; i++){
+			cout << output[i] << " ";
+		}
+		delete [] input;
+		delete [] output;
+	}
+
+
+(l) Multiplication (Recursive)- Given two integers M & N, calculate and return their multiplication using recursion. You can only use subtraction and addition for your calculation. No 
+other operators are allowed.
+Answer: int multiplyNumbers(int m, int n){
+		if(n > m){
+			return multiplyNumbers(n, m)
+		}
+		if(m == 0 || n == 0){
+			return 0;
+		}
+		return m + multiplyNumbers(m, n - 1);
+	}
+
+
+(m) Count Zeros- Given an integer N, count and return the number of zeros that are present in the given integer using recursion.
+Answer: int countZeros(int n){
+		if(n <= 9){
+			if(n == 0){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+		int last = n % 10;
+		int count = 0;
+		if(last == 0){
+			count = 1;
+		}
+		return count + countZeros(n / 10);
+	}
+
+
+(n) Geometric Sum- Given k, find the geometric sum using recursion.
+Answer: double geometricSum(int k){
+		if(k == 0){
+			return 1;
+		}
+		reuturn (1 / pow(2, k)) + geometricSum(k - 1);
+	}
+
+
+(o) Check Palindrome (recursive)- Check whether a given String S is a palindrome using recursion. Return true or false.
+Answer: bool isPalindrome(char arr[], int firstIndex, int lastIndex) {
+    		if(firstIndex >= lastIndex) {
+        		return true;
+    		}
+    		if(arr[firstIndex] != arr[lastIndex]){
+        		return false;
+    		}
+    		return isPalindrome(arr, (firstIndex + 1), (lastIndex - 1));
+	}
+	bool checkPalindrome(char input[]) {
+    		int size = 0;
+    		for(int i = 0; input[i] != '\0'; i++) {
+        		size = size + 1;
+    		}
+    		return isPalindrome(input, 0, size - 1);
+    	}
+
+
+(p) Sum of digits (recursive)- Write a recursive function that returns the sum of the digits of a given integer.
+Answer: int sumOfDigits(int n){
+    		if(n / 10 == 0) {
+        		return n;
+    		}
+    		int running_Sum = sumOfDigits(n/10);
+    		int result = n % 10 + running_Sum;
+    		return result;
+	}
