@@ -164,7 +164,7 @@ Answer: int allIndexes(int input[], int size, int x, int output[]){
 		}
 		else{
 			for(int i = ans - 1; i >= 0; i--){
-				output[i + 1] = output[i] + 1;
+				output[i] = output[i] + 1;
 			}
 		}
 		return ans;
